@@ -42,8 +42,9 @@ prob = UnivariateNormals.prob(a)
 print(a)
 print(prob)
 
-AMultivariateNormals = Random.AMultivariateNormals()
-a = AMultivariateNormals()
-prob = AMultivariateNormals.prob(a)
+
+UniqueUniformsInt = Random.UniqueUniformsInt(randrange=[0, 100])
+a = UniqueUniformsInt()
+prob = UniqueUniformsInt.prob(a)
 print(a)
 print(prob)

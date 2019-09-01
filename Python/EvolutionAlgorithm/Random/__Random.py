@@ -99,7 +99,16 @@ class CovarianceMultivariateNormals(AbstractRandom):
         return random.multivariate_normal(self._mean, self._cov, 10)
 
     def prob(self,z):
-        return stats.multivariate_normal.pdf(z, self._mean, self._cov)       
+        return stats.multivariate_normal.pdf(z, self._mean, self._cov)
+
+class UniqueUniformsInt(UniformInt):
+    def __init__(self, randrange=[0,10]):
+        super().__init__(randrange)
+        self._rand = lambda _min, _max, size : random.choice(range(_min, _max+1), size, replace=False)
+        
+    def __call__(self, size=10):
+        return numpy.sort(self._rand(self._min[0], self._max[0], size))
+        
 """
 class AMultivariateNormals(CovarianceMultivariateNormals):
     def __init__(self, mean=[0,0], A=[1, 15):
